@@ -35,7 +35,7 @@ This repository contains the implementation of a **Snake Game** developed for th
 - **Programming Framework**: Arduino IDE / PlatformIO
 - **External Libraries**: Included as specified in the project files
 
----
+-----
 
 ## 📁 Project Structure
 
@@ -46,7 +46,7 @@ This repository contains the implementation of a **Snake Game** developed for th
 - `demo.mp4` - 🎥 Gameplay demonstration (at least up to Level 4)
 - `highscore.eeprom` - 🏆 EEPROM high score data
 
----
+-------
 
 ## 🚀 Getting Started
 
