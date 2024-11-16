@@ -15,7 +15,7 @@ This repository contains the implementation of a **Snake Game** developed for th
 
 ### 🏆 Level Progression
 - **Level 1**: Basic gameplay as described above.
-- **Level 2**: ⚠️ A barrier (last digit of group number) appears; hitting it ends the game.
+- **Level 2**: ⚠️ A barrier (last digit of group number) appears; hitting it ends the game. Our group number is 17. So 7 will appear as barrier.
 - **Level 3**: ⏳ Food disappears after 5 seconds, with a countdown timer.
 - **Level 4**: 🟥 Red food appears, reducing score when eaten.
 - **Level 5+**: 🐍 Snake speed increases by 20% with each level, with more red food items.
