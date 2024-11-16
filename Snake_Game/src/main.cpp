@@ -1,76 +1,69 @@
-//libraries
 #include <Adafruit_GFX.h>
 #include <Adafruit_ILI9341.h>
 #include <SPI.h>
 
-// Pin definitions for the TFT display, joystick, and buzzer
-#define JOY_X      A0       // Joystick X-axis
-#define JOY_Y      A1       // Joystick Y-axis
-#define BUTTON_PIN 2        // Joystick button
-#define BUZZER_PIN 7        // Buzzer pin
+// Pin definitions for the TFT display and joystick
+#define TFT_CS     10
+#define TFT_RST    9
+#define TFT_DC     8
+#define JOY_X      A0
+#define JOY_Y      A1
+#define BUTTON_PIN 2 // Joystick button
+#define BUZZER_PIN 7
 
-#define TFT_DC     8        // TFT Display DC pin
-#define TFT_RST    9        // TFT Display Reset pin
-#define TFT_CS     10       // TFT Display Chip Select pin
 
-
+// Create TFT display object
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 
-
 // Snake properties
-int score = 0;                    // Player score
-int level = 1;                    // Current game level
-int direction = 1;                // Initial direction (0: up, 1: right, 2: down, 3: left)
-int snakeLength = 3;              // Initial snake length
-int delayTime = 400;              // Initial delay for snake speed
-int snakeX[100], snakeY[100];     // Snake coordinates (up to 100 segments)
-
-int foodX, foodY;                 // Food coordinates
-bool foodActive = false;          // Tracks if food is currently active
-
-int redFoodX[5], redFoodY[5];     // Array for red food coordinates (up to 5)
-bool redFoodActive[5] = {false};  // Tracks if red food is currently active
-int redFoodCount = 0;             // Number of active red food items
+int snakeX[100], snakeY[100]; // Snake coordinates
+int snakeLength = 2;         // Initial snake length
+int foodX, foodY;             // Food coordinates
+int redFoodX[5], redFoodY[5]; // Array for red food coordinates (up to 5)
+int redFoodCount = 0;         // Number of red food items active
+int score = 0;                // Player score
+int level = 1;                // Game level
+int direction = 1;            // Initial direction (0: up, 1: right, 2: down, 3: left)
+bool foodActive = false;      // Tracks if food is currently active
+bool redFoodActive[5] = {false};   // Tracks if red food is currently active
+int delayTime = 400; // Initial delay for snake speed
 
 // Barrier properties for Level 2 and Level 3
-int barrierX, barrierY;   // Coordinates for barrier placement
-const int barrierNumber = 8;    // Barrier number (can be replaced with actual digit)
-bool barrierActive = false;   // Tracks if the barrier is currently active
+int barrierX, barrierY;       // Barrier coordinates
+const int barrierDigit = 7;   // Example digit for barrier (replace with actual last digit)
+bool barrierActive = false;
 
 // Timer variables for food disappearance in Level 3
 unsigned long foodTimer = 0;  // Timer for food
 int foodCountdown = 5;        // Food countdown in seconds
 
-
 // Function declarations
-void spawnFood();                             // Spawn regular food
-bool isFoodTooCloseToBarrier(int foodX, int foodY); // Check if food is too close to the barrier
-void increaseSpeed();                         // Increase the snake's speed
-void spawnRedFood(int index);                 // Spawn red food at a specified index
-
+void spawnFood();
+void spawnRedFood(int index); // Modified spawnRedFood to accept an index
+bool isFoodTooCloseToBarrier(int foodX, int foodY);
+void increaseSpeed();
 
 // Function to initialize the game
 void setup() {
-  // Initialize the TFT display
   tft.begin();
-  tft.setRotation(3);                        // Set display orientation
-  tft.fillScreen(ILI9341_BLACK);              // Clear the screen with black background
+  tft.setRotation(3);
+  tft.fillScreen(ILI9341_BLACK);
 
-  // Initialize input/output pins
-  pinMode(BUTTON_PIN, INPUT_PULLUP);          // Configure joystick button as input with pull-up
-  pinMode(BUZZER_PIN, OUTPUT);                // Configure buzzer as output
+  // Initialize joystick button pin
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(BUZZER_PIN, OUTPUT); // Set buzzer pin as output
 
-  // Set the initial snake position at the center of the screen
-  snakeX[0] = tft.width() / 2;                // Initial X position of snake head
-  snakeY[0] = tft.height() / 2;               // Initial Y position of snake head
+  // Initial snake position 
+  snakeX[0] = tft.width() / 2;
+  snakeY[0] = tft.height() / 2;
 
-  spawnFood();                                // Spawn the first food
+  spawnFood(); // Spawn initial food
 
-  // Set text properties for the initial display
-  tft.setTextColor(ILI9341_WHITE);            // Set text color to white
-  tft.setTextSize(2);                         // Set text size
+  // Initial Display Setup
+  tft.setTextColor(ILI9341_WHITE);
+  tft.setTextSize(2);
 
-  // Display score, level, and timer labels
+  // Print the labels
   tft.setCursor(0, 0);
   tft.print("Score: ");
   tft.setCursor(100, 0);
@@ -78,9 +71,9 @@ void setup() {
   tft.setCursor(180, 0);
   tft.print("Timer: ");
 
-  // Display start prompt message
+  // Display start message
   tft.setCursor(60, 100);
-  tft.print("Press centre to start");
+  tft.print("Press button to start");
 }
 
 // Function to spawn food at a random location
@@ -170,12 +163,12 @@ void drawFood() {
 void drawBarrier() {
   if (barrierActive && level >= 2) { // Draw barrier for Level 2 and above
     tft.setTextColor(ILI9341_WHITE);
-    tft.setTextSize(12);
+    tft.setTextSize(10);
     // Calculate the center coordinates based on the screen width and height
     barrierX = (tft.width() - 20) / 2; // Adjust 20 for barrier width
     barrierY = (tft.height() - 24) / 2; // Adjust 24 for barrier height
     tft.setCursor(barrierX, barrierY);
-    tft.print(barrierNumber); // Print the barrier digit
+    tft.print(barrierDigit); // Print the barrier digit
   }
 }
 
