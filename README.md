@@ -1,6 +1,6 @@
 # 🎮 Snake Game on ILI9341 Display 🎮  
 
-Welcome to the **Snake Game** repository! This project is part of the **EE4360 - Embedded Systems Design and Programming** course at the University of Moratuwa. Immerse yourself in a retro-style game brought to life on the ILI9341 TFT display, complete with a joystick for dynamic controls, engaging gameplay, and interactive features.  
+Welcome to the **Snake Game** repository! This project is part of the semester 7 module  **EE4360 - Embedded Systems Design and Programming** course at the University of Moratuwa. Immerse yourself in a retro-style game brought to life on the ILI9341 TFT display, complete with a joystick for dynamic controls, engaging gameplay, and interactive features.  
 
 ---
 
