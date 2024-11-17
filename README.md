@@ -1,55 +1,70 @@
-# 🎮 Snake Game on ILI9341 Display 🎮
+# 🎮 Snake Game on ILI9341 Display 🎮  
 
-This repository contains the implementation of a **Snake Game** developed for the **EE4360 - Embedded Systems Design and Programming** course assignment at the University of Moratuwa. The game is designed to be played on an ILI9341 display and controlled with a joystick, featuring **multiple levels** of gameplay and **interactive elements**. 
-
----
-
-## 🚀 Game Features
-
-### 🐍 Basic Gameplay
-- **Snake Movement**: 🎮 Controlled by joystick input to navigate the snake.
-- **Food Appearance**: 🍏 Food appears randomly, adding 1 point to the score with each item eaten.
-- **Snake Growth**: 📈 The snake grows by 1 unit for each food item it consumes.
-- **Edge Wrapping**: ↪️ If the snake crosses an edge, it reappears on the opposite side.
-- **Game Over**: ❌ The game ends if the snake collides with itself.
-
-### 🏆 Level Progression
-- **Level 1**: Basic gameplay as described above.
-- **Level 2**: ⚠️ A barrier (last digit of group number) appears; hitting it ends the game. Our group number is 17. So 7 will appear as barrier.
-- **Level 3**: ⏳ Food disappears after 5 seconds, with a countdown timer.
-- **Level 4**: 🟥 Red food appears, reducing score when eaten.
-- **Level 5+**: 🐍 Snake speed increases by 20% with each level, with more red food items.
-
-### 🎶 Additional Features
-- **Sound Effects**: 🔊 Integrated buzzer adds immersive sound effects.
-- **Menu**: 📜 Simple menu for starting a new game or viewing high scores.
-- **High Score Saving**: 💾 High scores stored in EEPROM for future sessions.
-- **Joystick Navigation**: 🕹️ Joystick controls for both menu and gameplay.
+Welcome to the **Snake Game** repository! This project is part of the **EE4360 - Embedded Systems Design and Programming** course at the University of Moratuwa. Immerse yourself in a retro-style game brought to life on the ILI9341 TFT display, complete with a joystick for dynamic controls, engaging gameplay, and interactive features.  
 
 ---
 
-## 🛠️ Development Tools
+## 🌟 Game Highlights  
 
-- **Platform**: Wokwi-compatible development boards
-- **Display**: ILI9341 TFT
-- **Programming Framework**: Arduino IDE / PlatformIO
-- **External Libraries**: Included as specified in the project files
+### 🐍 Classic Snake Gameplay  
+- **Seamless Controls**: Navigate the snake using the joystick.  
+- **Food Hunt**: 🍎 Collect randomly placed food to increase your score and grow your snake.  
+- **Infinite Edges**: Travel across one edge and reappear on the opposite side.  
+- **Collision Consequences**: Beware of hitting your tail—it’s game over!  
 
------
+### 🎯 Multi-Level Fun  
+- **Level 1**: Start simple—just food collection and growth.  
+- **Level 2**: 🚧 Dodge barriers (shaped like the digit `7`, derived from our group number `17`).  
+- **Level 3**: ⏳ Timed challenges with disappearing food! Grab it before it vanishes.  
+- **Level 4**: 🟥 Beware of red food—it reduces your score.  
+- **Level 5+**: Accelerating difficulty with faster snake speeds and more red food.  
 
-## 📁 Project Structure
+### 🔊 Interactive Features  
+- **Sound Effects**: A buzzer creates immersive audio feedback.  
+- **Dynamic Menu**: Easy navigation for starting a game or checking high scores.  
+- **High Score Persistence**: 🏆 Store your best scores in EEPROM for bragging rights!  
 
-- `src/` - Source code files 📂
-- `include/` - Header files 📄
-- `lib/` - Libraries, if any 📚
-- `README.md` - Project documentation 📜
-- `demo.mp4` - 🎥 Gameplay demonstration (at least up to Level 4)
-- `highscore.eeprom` - 🏆 EEPROM high score data
+---
 
--------
+## 🛠️ Tech Stack & Tools  
 
-## 🚀 Getting Started
+- **Hardware**: ILI9341 TFT Display & Joystick  
+- **Development Tools**: Arduino IDE / PlatformIO  
+- **Platform**: Wokwi Virtual Simulator  
+- **Libraries**: Integrated and managed within project files  
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/Lainitha/Snake_Game.git
+---
+
+## 📂 Project Structure  
+
+- **`src/`**: Source code for the game 🧩  
+- **`include/`**: Header files for modularity 📄  
+- **`lib/`**: Additional libraries 📚  
+- **`README.md`**: Comprehensive documentation 📝  
+- **`demo.mp4`**: 🎥 Gameplay demo showcasing all levels  
+- **`highscore.eeprom`**: Saved high scores for persistence  
+
+---
+
+## 🚀 Quick Start  
+
+1. **Clone the Repository**  
+   ```bash  
+   git clone https://github.com/Lainitha/Snake_Game.git  
+   ```  
+
+2. **Set Up Your Environment**  
+   - Load the project in PlatformIO or Arduino IDE.  
+   - Connect your ILI9341 display and joystick module.  
+
+3. **Run the Game**  
+   - Flash the code onto your development board.  
+   - Start playing on the ILI9341 display!  
+
+---
+
+## 🎉 Why You'll Love This Game  
+
+Experience the nostalgia of classic snake games, now upgraded with **modern embedded systems design**. From increasing challenges to interactive sounds and high score tracking, this game offers both fun and a chance to showcase your coding and hardware skills.  
+
+Ready to take on the challenge? Let’s see how long you can last! 🐍✨  
