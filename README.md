@@ -54,7 +54,7 @@ Welcome to the **Snake Game** repository! This project is part of the semester 7
    ```  
 
 2. **Set Up Your Environment**  
-   - Load the project in PlatformIO or Arduino IDE.  
+   - Load the project in PlatformIO or Wokwi online platform.  
    - Connect your ILI9341 display and joystick module.  
 
 3. **Run the Game**  
